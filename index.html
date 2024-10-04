@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="et">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,13 @@
     <script src="https://kit.fontawesome.com/273cb3409b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <title>Company Web</title>
+    
 </head>
+
 <body id="home">
+    
     <!-- navbar -->
-    <!-- navbar -->
+
     <nav id="navbar">
         <h1>
             <span class="text-primary"><i class="fas fa-book-open"></i> FIR</span>
@@ -24,7 +28,9 @@
             <li><a href="#contact">Kontakt</a></li>
         </ul>
     </nav>
+    
     <!-- header - showcase -->
+
     <header id="showcase">
         <div class="showcase-content">
             <h1 class="l-heading">Lihtsalt tee midagi</h1>
@@ -32,7 +38,9 @@
             <a href="#what" class="btn btn-primary">Loe rohkem</a>
         </div>
     </header>
+    
     <!-- #what -->
+
     <section id="what" class="bg-light py-1">
         <div class="container">
             <h2 class="m-heading text-center">Mida me <span class="text-primary">pakume</span></h2>
@@ -61,14 +69,114 @@
             </div>
         </div>
     </section>
+    
     <!-- #who -->
+
     <section id="who">
+        
         <!-- img -->
-        <div></div>
+        <div class="who-img"></div>
+        
         <!-- text-content -->
+        
+        <div class="bg-dark p-1">
+            <h2 class="m-heading">Kes <span class="text-primary">Me</span> Oleme</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora deleniti repellat laudantium cum, libero vel. Corrupti, ut ipsum autem perferendis velit aut earum quam sed, deleniti sequi consectetur distinctio libero.</p>
+            <h3>Meie meeskond</h3>
+            <ul>
+                <li>Kaval Ants: projektijuht</li>
+                <li>Puna Mütsike: arendusjuht</li>
+                <li>Lumi Valguke: konsultant</li>
+                <li>Jõulu Vana: arendaja</li>
+            </ul>
+        </div>
     </section>
-    <section id="clients"></section>
-    <section id="contact"></section>
-    <footer id="footer"></footer>
+    
+    <!-- clients -->
+    
+    <section id="clients">
+        <div>
+            <h2 class="m-heading text-center">Meie <span class="text-primary">kliendid</span></h2>
+            <div class="py-1 items">
+                <img src="./img/logo1.png" alt="Klient1">
+                <img src="./img/logo2.png" alt="Klient2">
+                <img src="./img/logo3.png" alt="Klient3">
+                <img src="./img/logo4.png" alt="Klient4">
+                <img src="./img/logo5.png" alt="Klient5">
+            </div>
+        </div>
+    </section>
+    
+    <!-- contact -->
+    
+    <section id="contact">
+
+        <!-- form -->
+
+        <div class="p-1 bg-primary contact-form">
+            <h2 class="m-heading">Võta meiega ühendust</h2>
+            <p>Täida all olev vorm</p>
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Nimi</label>
+                    <input type="text" id="name" placeholder="Sisesta oma nimi">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Sisesta oma email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="phone" id="phone" placeholder="Sisesta oma telefoninumber">
+                </div>
+                <div class="form-group">
+                    <label for="message">Sõnum</label>
+                    <textarea id="message" placeholder="Sisesta oma sõnum"></textarea>
+                </div>
+                <input type="submit" value="Saada" class="btn btn-dark">
+            </form>
+        </div>
+
+        <!-- map -->
+        <div id="map" class="contact-map"></div>
+    
+    </section>
+    
+    <footer id="footer" class="bg-dark text-center py-1">
+        <p>Kõik õigused on kaitstud &copy;2024</p>
+    </footer>
+    
+    <script>
+        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+          key: "AIzaSyABvG7OFu4oaPm5HWrJ10xmDc6uN8CRmKI",
+          v: "weekly",
+        });
+    </script>
+    <script>
+        
+        let map;
+
+        async function initMap() {
+        
+        const position = { lat: 58.349451, lng: 26.714695 };
+        
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+        map = new Map(document.getElementById("map"), {
+            zoom: 16,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        const marker = new AdvancedMarkerElement({
+            map: map,
+            position: position,
+            title: "Tartu",
+        });
+        }
+
+        initMap();
+    </script>
 </body>
 </html>
